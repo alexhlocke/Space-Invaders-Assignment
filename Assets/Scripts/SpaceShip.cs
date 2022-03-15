@@ -10,6 +10,7 @@ public class SpaceShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().playSound("spaceship");
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myRigidbody2D.velocity = Vector2.left * speed;
     }

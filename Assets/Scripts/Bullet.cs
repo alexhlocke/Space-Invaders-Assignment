@@ -28,27 +28,30 @@ public class Bullet : MonoBehaviour
         int pointsToBeAdded = 0;
         if (collision.CompareTag("Enemy1"))
         {
+            FindObjectOfType<AudioManager>().playSound("explode");
             pointsToBeAdded = 40;
             FindObjectOfType<InvaderManager>().speedUp();
-            // Debug.Log("Hit Enemy 1");
+            //collision.GetComponent<Animator>().SetTrigger("Death");
         } 
         else if (collision.CompareTag("Enemy2"))
         {
+            FindObjectOfType<AudioManager>().playSound("explode");
             pointsToBeAdded = 20;
             FindObjectOfType<InvaderManager>().speedUp();
-            // Debug.Log("Hit Enemy 2");
+            //collision.GetComponent<Animator>().SetTrigger("Death");
         }
         else if (collision.CompareTag("Enemy3"))
         {
+            FindObjectOfType<AudioManager>().playSound("explode");
             pointsToBeAdded = 10;
             FindObjectOfType<InvaderManager>().speedUp();
-            // Debug.Log("Hit Enemy 3");
+            //collision.GetComponent<Animator>().SetTrigger("Death");
         }
         else if (collision.CompareTag("Enemy4"))
         {
+            FindObjectOfType<AudioManager>().playSound("explode");
             pointsToBeAdded = Random.Range(1, 10)*10;
             FindObjectOfType<InvaderManager>().speedUp();
-            // Debug.Log("Hit Enemy 4");
         }
 
         //If its a shield or wall, destroy enemy

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class UI : MonoBehaviour
 
     public void gameOver()
     {
+        FindObjectOfType<AudioManager>().playSound("gameOver");
         Debug.Log("---GAME OVER---");
         if (score > highScore) {
             highScore = score;
@@ -48,11 +50,13 @@ public class UI : MonoBehaviour
             PlayerPrefs.SetInt("Highscore", highScore);
         }
 
-        score = 0;
-        scoreText.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString("D4");
-        lives = 3;
-        livesText.GetComponent<TMPro.TextMeshProUGUI>().text = "Lives: " + lives.ToString("D4");
+        SceneManager.LoadScene("Credits");
+        // score = 0;
+        // scoreText.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score.ToString("D4");
+        // lives = 3;
+        // livesText.GetComponent<TMPro.TextMeshProUGUI>().text = "Lives: " + lives.ToString("D4");
 
-        FindObjectOfType<InvaderManager>().resetGame();
+
+        //FindObjectOfType<InvaderManager>().resetGame();
     }
 }

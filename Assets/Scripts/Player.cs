@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public GameObject bullet;
     public Transform shottingOffset;
+    public Animator animator;
     public float movementSpeed = 6f;
     
     private bool bulletFired = false;
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && bulletFired == false)
         {
+            animator.SetTrigger("shoot");
+            FindObjectOfType<AudioManager>().playSound("playerShoot");
             GameObject shot = Instantiate(bullet, shottingOffset.position, Quaternion.identity);
             bulletFired = true;
             //Destroy(shot, 3f);

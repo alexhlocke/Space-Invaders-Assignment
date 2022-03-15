@@ -43,7 +43,12 @@ public class InvaderManager : MonoBehaviour
             }
             allInvadersDead = false;
 
+            if (invader.position.y <= -3.5) {
+                FindObjectOfType<UI>().gameOver();
+            }
+
             if (Random.Range(0,30000) == 1) {
+                FindObjectOfType<AudioManager>().playSound("enemyShoot");
                 GameObject shot = Instantiate(enemyBullet, invader.position, Quaternion.identity);
             }
 
